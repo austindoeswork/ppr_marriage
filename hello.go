@@ -26,10 +26,14 @@ func main(){
 		fmt.Println(" choice.")
 		
 	}
+	totalOffer := 0
 	for num,room := range ROOMS{
 		fmt.Print("ROOM: ")
 		fmt.Println(num)
 		room.PrettyPrint()
+		totalOffer += room.Dowry
 	}
+	fmt.Print("\nTOTAL RENT OFFERED: ")
+		fmt.Println(totalOffer)
 
 }
