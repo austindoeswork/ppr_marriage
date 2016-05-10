@@ -15,7 +15,7 @@ func marry(name string, offer int, room int, ROOMS map[int]Room, TENANTS map[str
 	if oldHusband != "" {
 		tempT := TENANTS[oldHusband]
 		tempT.Current++
-		TENANTS[name] = tempT
+		TENANTS[oldHusband] = tempT
 		findBestRoom(oldHusband, ROOMS, TENANTS)
 	}
 
