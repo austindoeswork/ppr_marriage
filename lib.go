@@ -24,10 +24,19 @@ type Tenant struct {
 }
 
 type Room struct {
-	Current string 
+	Current string
 	Dowry int
 	Prefs []RoomPref
 }
+
+func (r Room) PrettyPrint(){
+	fmt.Print("tenant: ")
+	fmt.Println(r.Current)
+	fmt.Print("dowry: ")
+	fmt.Println(r.Dowry)
+	// fmt.Print("tenant:")
+	// fmt.Println(r.Current)
+} 
 
 type ByValue []RoomPref
 
