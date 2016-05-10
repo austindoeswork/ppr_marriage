@@ -5,7 +5,7 @@ import ("fmt"
 )
 
 func Hello() {
-	fmt.Println("yo nigga")
+	fmt.Println("yo dawg")
 }
 
 type TenantPref struct {
