@@ -21,9 +21,11 @@ func marry(name string, offer int, room int, ROOMS map[int]Room, TENANTS map[str
 
 }
 
-func willMarry(offer int, room int, ROOMS map[int]Room) (bool) {
+func willMarry(offer int, suitor string, room int, ROOMS map[int]Room, TENANTS map[string]Tenant) (bool) {
 	if ROOMS[room].Dowry < offer {
 		return true
+	} else if  ROOMS[room].Dowry == offer{
+		return TENANTS[suitor].Total > TENANTS[ROOMS[room].Current].Total
 	} else {
 		return false
 	}
@@ -35,7 +37,7 @@ func findBestRoom(name string, ROOMS map[int]Room, TENANTS map[string]Tenant) {
 	desiredRoom := TENANTS[name].Prefs[currentBest].Room
 	offer := TENANTS[name].Prefs[currentBest].Cost
 
-	if willMarry(offer, desiredRoom, ROOMS) {	//if they can get married
+	if willMarry(offer, name, desiredRoom, ROOMS, TENANTS) {	//if they can get married
 		marry(name, offer, desiredRoom, ROOMS, TENANTS) //marry them
 	} else { //try again with the next best room
 		temp := TENANTS[name]

@@ -21,6 +21,7 @@ type RoomPref struct {
 type Tenant struct {
 	Current int
 	Prefs []TenantPref
+	Total int
 }
 
 type Room struct {

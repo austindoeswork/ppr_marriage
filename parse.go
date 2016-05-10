@@ -80,6 +80,7 @@ func miniParse(path string) (name string, tenant Tenant){
 		tPref.Room,_ = strconv.Atoi(record[0])
 		tPref.Cost,_ = strconv.Atoi(record[1])
 		tenant.Prefs = append(tenant.Prefs, tPref)
+		tenant.Total += tPref.Cost
 	}
 	return
 }
