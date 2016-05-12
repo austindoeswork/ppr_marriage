@@ -36,11 +36,29 @@ func TestScale(t *testing.T) {
 	tst[380] = 8
 	tst[450] = 1
 
-	rooms := toRooms(tst)
-	assert.Len(t, rooms, 9)
+	tests := []struct {
+		prices map[int]int
+		floor  int
+	}{
+		{
+			prices: map[int]int{380: 8, 450: 1},
+			floor:  300,
+		},
+		{
+			prices: map[int]int{300: 8, 700: 1},
+			floor:  300,
+		},
+	}
 
-	total := getTotal(rooms)
-	adj := fscale(total, 3420, 300, rooms)
+	for i := range tests {
+		rooms := toRooms(tests[i].prices)
 
-	assert.True(t, math.Abs(float64(getTotal(adj)-3420)) < 20)
+		assert.Len(t, rooms, 9)
+
+		total := getTotal(rooms)
+		adj := fscale(total, 3420, tests[i].floor, rooms)
+
+		assert.True(t, math.Abs(float64(getTotal(adj)-3420)) < 20)
+
+	}
 }
